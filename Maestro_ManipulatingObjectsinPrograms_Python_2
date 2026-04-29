@@ -7,6 +7,15 @@ class Hero:
     def heal(self, amount):
         self.hp += amount
         return amount
+    
+    def take_damage(self, amount):
+        if amount > self.hp:
+            actual = self.hp
+        else:
+            actual = amount
+
+        self.hp -= actual
+        return actual
 
 heroes = [
     Hero("Mage", 40, 80),
@@ -20,6 +29,12 @@ for hero in heroes:
     healed = hero.heal(5)   # changes hero.hp
     total_healed += healed  # aggregates
 
+total_damage = 0
+
+for hero in heroes:
+    damage = hero.take_damage(5)
+    total_damage += damage
+
 print("Total healed:", total_healed)
 print("Final HPs:")
 for hero in heroes:
@@ -32,3 +47,4 @@ for hero in heroes:
         low_hp_heroes.append(hero.name)
 
 print("Heroes still low:", low_hp_heroes)
+print("Total damage taken:", total_damage)
