@@ -24,3 +24,11 @@ print("Total healed:", total_healed)
 print("Final HPs:")
 for hero in heroes:
     print(hero.name, hero.hp)
+
+low_hp_heroes = []
+
+for hero in heroes:
+    if hero.hp < 60:
+        low_hp_heroes.append(hero.name)
+
+print("Heroes still low:", low_hp_heroes)
